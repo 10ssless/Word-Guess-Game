@@ -2,9 +2,9 @@ body {
     font-family: 'Courier New', Courier, monospace;
     color: ghostwhite;
     background: rgb(249, 72, 72, 0.3);
-    
+    font-size: 24px;
     background-image: url(../images/pavillion.jpg);
-    
+    background-size: 100%; 
     
     background-blend-mode: overlay;
    
@@ -29,7 +29,7 @@ a:hover{
     width: 55%;
     position: absolute;
     top: 3%;
-    left: 29.1%;
+    left: 35.1%;
 
 }
 
@@ -41,9 +41,9 @@ a:hover{
     /* background: gray; */
     
     position: absolute;
-    top: 105px;
+    top: 58%;
     padding-left: 2px;
-    letter-spacing: 5.2px;
+    letter-spacing: 7.5px;
     text-align: justify;
     transition-property: color;
     transition-duration: 1.5s;
