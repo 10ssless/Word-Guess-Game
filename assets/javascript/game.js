@@ -10,30 +10,29 @@ var isAlpha = function (ch) {
         && (ch >= "a" && ch <= "z" || ch >= "A" && ch <= "Z");
 }
 
-// function createFill(str){
-//     var slot = "__ ";
-//     var fill = "";
-//     if (str.indexOf(" ") == -1) {
-//         fill = slot.repeat(str.length);
-//     }
-//     else {
-//         for (var i = 0; i < str.length; i++) {
-//             if (str[i] == " ") {
-//                 fill += "    ";
-//             }
-//             else {
-//                 fill += slot;
-//             }
-//         }
-//     }
-//     return fill;
-// }
+function sound(src) {
+    this.sound = document.createElement("audio");
+    this.sound.src = src;
+    this.sound.setAttribute("preload", "auto");
+    this.sound.setAttribute("controls", "none");
+    this.sound.style.display = "none";
+    document.body.appendChild(this.sound);
+    this.play = function () {
+        this.sound.play();
+    }
+    this.stop = function () {
+        this.sound.pause();
+    }
+}
+
+
 
 
 
 document.onkeyup = function(event){ 
     // Take user letter and stores it
     var letter = event.key.toUpperCase();
+    
 
 
     // Selects key from keys array & creates empty slots based on length of key
@@ -49,6 +48,8 @@ document.onkeyup = function(event){
         guessesLeft = 10;
         lettersGuessed = [];
         answer = [];
+        document.getElementById("g-letters").innerHTML = lettersGuessed;
+        document.getElementById("g-left").innerHTML = guessesLeft;
         
     }
     
@@ -96,10 +97,12 @@ document.onkeyup = function(event){
         }
         
     }
-    if(count == key.length){
+    if(key.length > 0 && count == key.length){
         wins++;
         document.getElementById("wins").innerHTML = wins;
         document.getElementById("answer").style = "color: rgb(21, 186, 161);";
+        mySound = new sound("assets/sounds/applause.mp3");
+        mySound.play();
     }
     
 
