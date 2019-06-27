@@ -5,11 +5,13 @@ var keys = ["SPECTRE","ANNIHILATION","CASABLANCA","GOODFELLAS","EXMACHINA","RATA
 var key = "";
 var answer = [];
 
+// custom function to check if character is in the alphabet
 var isAlpha = function (ch) {
     return typeof ch === "string" && ch.length === 1
         && (ch >= "a" && ch <= "z" || ch >= "A" && ch <= "Z");
 }
 
+// setup function to play sound
 function sound(src) {
     this.sound = document.createElement("audio");
     this.sound.src = src;
@@ -36,6 +38,7 @@ document.onkeyup = function(event){
 
 
     // Selects key from keys array & creates empty slots based on length of key
+    // Resets counters and letters guessed
     if(letter == "ENTER"){
         key = keys[Math.floor(Math.random() * keys.length)]
         // var fill = createFill(key);
@@ -60,7 +63,7 @@ document.onkeyup = function(event){
     if(key.indexOf(letter) != -1){
         for (var i = 0; i < key.length; i++){   // Loop thru key to find desired index
                 if(letter==key[i]){
-                    answer[i] = letter;
+                    answer[i] = letter;         // assign letter to correct index
                     console.log(answer);
                     var update = "";
                     for(var j=0;j<key.length;j++){    // Build string from array of correct guesses
@@ -71,7 +74,7 @@ document.onkeyup = function(event){
                             update += " "+answer[j]+"  ";  
                         }
                     }
-                    document.getElementById("answer").innerHTML = update;   // Print correct letter so far in html
+                    document.getElementById("answer").innerHTML = update;   // Print correct letter so far in html span
                 }
             }
             
@@ -82,27 +85,31 @@ document.onkeyup = function(event){
             guessesLeft -= 1;                                               // update guesses left
             document.getElementById("g-letters").innerHTML = lettersGuessed;
             document.getElementById("g-left").innerHTML = guessesLeft;
-            if(guessesLeft == 0){
+            if(guessesLeft == 0){                                           // when guesses run out, text goes black
                 document.getElementById("answer").style = "color: rgb(0, 0, 0);";
                 document.getElementById("enter").style = "color: rgb(255, 196, 0)";
-
+                booing = new sound("assets/sounds/booing.mp3");
+                booing.play();
             }
         }
     }
 
+    // Final check of each letter guessed
     var count = 0;
-    for(var i=0;i<key.length;i++){
+    for(var i=0; i<key.length; i++){
         if (answer[i] == key[i]) {
             count++;
         }
         
     }
-    if(key.length > 0 && count == key.length){
+
+    // Update wins if answer is correct
+    if (key.length > 0 && count == key.length){
         wins++;
         document.getElementById("wins").innerHTML = wins;
         document.getElementById("answer").style = "color: rgb(21, 186, 161);";
-        mySound = new sound("assets/sounds/applause.mp3");
-        mySound.play();
+        applause = new sound("assets/sounds/applause.mp3");
+        applause.play();
     }
     
 
