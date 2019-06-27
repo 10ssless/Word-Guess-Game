@@ -1,7 +1,7 @@
 var wins = 0;
 var guessesLeft = 10;
 var lettersGuessed = [];
-var keys = ["SPECTRE","ANNIHILATION","BOMBSHELL"];
+var keys = ["SPECTRE","ANNIHILATION","CASABLANCA","GOODFELLAS","EXMACHINA","RATATOUILLE","WATCHMEN","GHOSTBUSTERS","DEADPOOL"];
 var key = "";
 var answer = [];
 
@@ -10,6 +10,25 @@ var isAlpha = function (ch) {
         && (ch >= "a" && ch <= "z" || ch >= "A" && ch <= "Z");
 }
 
+// function createFill(str){
+//     var slot = "__ ";
+//     var fill = "";
+//     if (str.indexOf(" ") == -1) {
+//         fill = slot.repeat(str.length);
+//     }
+//     else {
+//         for (var i = 0; i < str.length; i++) {
+//             if (str[i] == " ") {
+//                 fill += "    ";
+//             }
+//             else {
+//                 fill += slot;
+//             }
+//         }
+//     }
+//     return fill;
+// }
+
 
 
 document.onkeyup = function(event){ 
@@ -17,22 +36,23 @@ document.onkeyup = function(event){
     var letter = event.key.toUpperCase();
 
 
-    // Creates empty slots based on length of key
-    
+    // Selects key from keys array & creates empty slots based on length of key
     if(letter == "ENTER"){
         key = keys[Math.floor(Math.random() * keys.length)]
+        // var fill = createFill(key);
         var slot = "__ ";
         var fill = slot.repeat(key.length);
         document.getElementById("slots").innerHTML = fill;
         document.getElementById("answer").innerHTML = "";
         document.getElementById("answer").style = "color:ghostwhite";
+        document.getElementById("enter").style = "color: white";
         guessesLeft = 10;
         lettersGuessed = [];
         answer = [];
-
+        
     }
     
-
+    
     
     
     // Finds if letter exists in key  
@@ -61,6 +81,11 @@ document.onkeyup = function(event){
             guessesLeft -= 1;                                               // update guesses left
             document.getElementById("g-letters").innerHTML = lettersGuessed;
             document.getElementById("g-left").innerHTML = guessesLeft;
+            if(guessesLeft == 0){
+                document.getElementById("answer").style = "color: rgb(0, 0, 0);";
+                document.getElementById("enter").style = "color: rgb(255, 196, 0)";
+
+            }
         }
     }
 
@@ -69,6 +94,7 @@ document.onkeyup = function(event){
         if (answer[i] == key[i]) {
             count++;
         }
+        
     }
     if(count == key.length){
         wins++;

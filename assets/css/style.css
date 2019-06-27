@@ -1,7 +1,36 @@
 body {
     font-family: 'Courier New', Courier, monospace;
     color: ghostwhite;
-    background: lightcoral;
+    background: rgb(249, 72, 72, 0.3);
+    
+    background-image: url(../images/pavillion.jpg);
+    
+    
+    background-blend-mode: overlay;
+   
+}
+
+
+a{
+    
+    text-decoration: none;
+    color: white;
+    transition-property: color;
+    transition-duration: 1s;
+}
+
+a:hover{
+    text-decoration: none;
+    color:rgb(21, 186, 161);
+
+}
+
+#laurel-leaves {
+    width: 55%;
+    position: absolute;
+    top: 3%;
+    left: 29.5%;
+
 }
 
 .game {
@@ -17,5 +46,11 @@ body {
     letter-spacing: 5.2px;
     text-align: justify;
     transition-property: color;
-    transition-duration: 1s;
+    transition-duration: 1.5s;
+}
+
+#enter {
+    
+    transition-property: color;
+    transition-duration: 4s;
 }
