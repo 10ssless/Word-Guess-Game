@@ -2,6 +2,7 @@ var wins = 0;
 var guessesLeft = 10;
 var lettersGuessed = [];
 var keys = ["SPECTRE","ANNIHILATION","CASABLANCA","GOODFELLAS","EXMACHINA","RATATOUILLE","WATCHMEN","GHOSTBUSTERS","DEADPOOL"];
+// var keys = ["EX MACHINA"]
 var key = "";
 var answer = [];
 
