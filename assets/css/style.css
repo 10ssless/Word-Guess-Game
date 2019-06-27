@@ -1,0 +1,21 @@
+body {
+    font-family: 'Courier New', Courier, monospace;
+    color: ghostwhite;
+    background: lightcoral;
+}
+
+.game {
+    padding: 5%;
+}
+
+#answer {
+    /* background: gray; */
+    
+    position: absolute;
+    top: 105px;
+    padding-left: 2px;
+    letter-spacing: 5.2px;
+    text-align: justify;
+    transition-property: color;
+    transition-duration: 1s;
+}
