@@ -56,3 +56,7 @@ a:hover{
     transition-property: color;
     transition-duration: 4s;
 }
+
+.fill-in{
+    padding-left: 40px;
+}
