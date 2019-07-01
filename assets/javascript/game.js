@@ -65,12 +65,13 @@ document.onkeyup = function(event){
                 
         }
         else{
-            if(isAlpha(letter) && lettersGuessed.indexOf(letter) == -1) {       // check if key pressed was a letter AND if it has been guessed already
+            if(isAlpha(letter) && lettersGuessed.indexOf(letter) == -1) {       // rule out non-single-letter key clicks AND if it has been guessed already
                 lettersGuessed.push(letter);
                 guessesLeft -= 1;                                               // update guesses left
                 document.getElementById("g-letters").innerHTML = lettersGuessed;
                 document.getElementById("g-left").innerHTML = guessesLeft;
                 if(guessesLeft == 0){                                           // when guesses run out, text goes black
+                    letter_lock = true;
                     document.getElementById("answer").style = "color: rgb(0, 0, 0);";
                     document.getElementById("enter").style = "color: rgb(255, 196, 0)";
                     booing = new sound("assets/sounds/booing.mp3");
@@ -99,7 +100,7 @@ document.onkeyup = function(event){
         }
     }
     else if (letter == "ENTER") {
-        letter_lock = false
+        
         key = keys[Math.floor(Math.random() * keys.length)]
         // var fill = createFill(key);
         var slot = "__ ";
@@ -113,8 +114,10 @@ document.onkeyup = function(event){
         answer = [];
         document.getElementById("g-letters").innerHTML = lettersGuessed;
         document.getElementById("g-left").innerHTML = guessesLeft;
+        letter_lock = false
 
     }
+
 
     
 

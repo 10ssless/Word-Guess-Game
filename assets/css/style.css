@@ -29,7 +29,7 @@ a:hover{
     width: 55%;
     position: absolute;
     top: 3%;
-    left: 35.1%;
+    left: 35.2%;
 
 }
 
@@ -54,6 +54,9 @@ a:hover{
 #enter {
     
     transition-property: color;
-    transition-duration: 4s;
+    transition-duration: 2s;
 }
 
+body:hover #enter {
+    color: rgb(255, 196, 0)
+}
